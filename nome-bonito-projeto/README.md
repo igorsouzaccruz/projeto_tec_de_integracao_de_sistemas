@@ -38,21 +38,26 @@ Este projeto demonstra a integração entre duas APIs (Java e C#) usando **Apach
 # Clone o projeto
 git clone https://github.com/igorsouzaccruz/projeto_tec_de_integracao_de_sistemas
 
+
 # (Opcional) Remova containers antigos
 docker-compose down --volumes
 
-# Suba tudo com build forçado
-docker-compose up --build
-
-
-🌐 Endpoints e Acessos
+# Suba tudo 
+docker-compose up 
+```
+### 🌐 Endpoints e Acessos
+```
 Serviço	URL
 Frontend	http://localhost:4200
 API Producer	http://localhost:8082/api1
 API Consumer	http://localhost:8083/api2
 Kafka UI	http://localhost:8080
+```
 
-📁 Estrutura do Projeto
+---
+
+#### 📁 Estrutura do Projeto
+```
 bash
 Copiar
 Editar
@@ -61,3 +66,4 @@ Editar
 ├── frontend/     # Angular 17 (standalone)
 ├── docker-compose.yml
 └── README.md
+```
