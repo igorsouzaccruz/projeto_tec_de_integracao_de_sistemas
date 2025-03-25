@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class NomeService {
-  private api1Url = 'http://localhost:8082/api1';
+  private api1Url = ' http://localhost:8082/api1';
 
   constructor(private http: HttpClient) {}
 
