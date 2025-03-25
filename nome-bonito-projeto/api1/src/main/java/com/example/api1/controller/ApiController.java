@@ -14,6 +14,11 @@ public class ApiController {
         this.producerService = producerService;
         this.consumerService = consumerService;
     }
+    
+    @GetMapping("/")
+    public String status() {
+        return "API Java online!";
+    }
 
     @PostMapping("/verificarNome")
     public void verificarNome(@RequestBody String nome) {
