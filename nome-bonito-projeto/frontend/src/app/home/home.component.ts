@@ -18,6 +18,7 @@ export class HomeComponent {
   constructor(private nomeService: NomeService) {}
 
   verificarNome(): void {
+    this.resultado = '';
     this.nomeService.verificarNome(this.nome).subscribe(() => {
       setTimeout(() => {
         this.nomeService.obterResultado(this.nome).subscribe((res) => {

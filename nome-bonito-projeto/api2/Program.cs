@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Confluent.Kafka;
 using System.Text.Json;
+using System.Security.Cryptography;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,13 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+string GerarSha256(string input)
+{
+    using var sha256 = SHA256.Create();
+    var bytes = Encoding.UTF8.GetBytes(input);
+    var hash = sha256.ComputeHash(bytes);
+    return Convert.ToHexString(hash).ToLower(); 
+}
 
 async Task ConsumirAsync(IServiceProvider services)
 {
@@ -53,10 +62,13 @@ async Task ConsumirAsync(IServiceProvider services)
 
             var bonito = await db.Nomes.AnyAsync(n => n.NomeValor.ToLower() == nomeRecebido);
 
+            string token = GerarSha256("igor-e-lucas");
+
             var jsonObj = new
             {
                 nome = nomeRecebido,
-                ehBonito = bonito
+                ehBonito = bonito,
+                token = token
             };
 
             string mensagemJson = JsonSerializer.Serialize(jsonObj);
