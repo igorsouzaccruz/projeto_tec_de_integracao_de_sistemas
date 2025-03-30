@@ -11,10 +11,10 @@ export class NomeService {
   constructor(private http: HttpClient) {}
 
   verificarNome(nome: string): Observable<void> {
-    return this.http.post<void>(`${this.api1Url}/verificarNome`, nome);
+    return this.http.post<void>(`${this.api1Url}/verificarNome`, { nome });
   }
 
-  obterResultado(): Observable<boolean> {
-    return this.http.get<boolean>(`${this.api1Url}/resultado`);
+  obterResultado(nome: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.api1Url}/resultado?nome=${nome}`);
   }
 }

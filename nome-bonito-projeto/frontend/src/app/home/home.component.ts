@@ -20,12 +20,12 @@ export class HomeComponent {
   verificarNome(): void {
     this.nomeService.verificarNome(this.nome).subscribe(() => {
       setTimeout(() => {
-        this.nomeService.obterResultado().subscribe((res) => {
+        this.nomeService.obterResultado(this.nome).subscribe((res) => {
           this.resultado = res
             ? 'Sim, seu nome é bonito! 😊'
             : 'Não, seu nome não é bonito. 😞';
         });
-      }, 2000);
+      }, 2000); // tempo de espera para o Kafka processar
     });
   }
 }

@@ -26,7 +26,7 @@ public class ApiController {
     }
 
     @GetMapping("/resultado")
-    public boolean obterResultado() {
-        return consumerService.isNomeBonito();
+    public boolean obterResultado(@RequestParam String nome) {
+        return consumerService.isNomeBonito(nome);
     }
 }
